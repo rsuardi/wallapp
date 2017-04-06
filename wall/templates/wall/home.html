@@ -7,7 +7,15 @@
 <body ng-app="wall.demo">
     {% verbatim %}
     <div ng-controller="wallController">
-        {{ person.name}} is {{ person.age }} years old.
+        <div ng-repeat="list in data">
+            <h3>{{ list.name}}</h3>
+            <ul ng-repeat="thing in list.things">
+                <li >{{ thing.first_thing }}</li>
+                <li>{{ thing.second_thing }}</li>
+            </ul>
+        </div>
+
+
     </div>
     {% endverbatim %}
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
@@ -18,10 +26,26 @@
             angular.module('wall.demo', []).controller('wallController', ['$scope',wallController]);
 
             function wallController($scope){
-                $scope.person = {
-                    name : 'Joe',
-                    age : '35'
-                }
+                $scope.data = [
+                    {
+                        name : 'Django something',
+                        things : [
+                            {
+                                first_thing : 'lollipop',
+                                second_thing : 'laptop'
+                            }
+                        ]
+                    },
+                    {
+                        name: 'Angular stuff',
+                        things : [
+                            {
+                                first_thing : 'cap',
+                                second_thing: 'pen',
+                            }
+                        ]
+                    }
+                ]
             }
 
         }());
