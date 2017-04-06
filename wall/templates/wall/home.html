@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app="wall.demo">
+    {% verbatim %}
+    <div ng-controller="wallController">
+        {{ person.name}} is {{ person.age }} years old.
+    </div>
+    {% endverbatim %}
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script>
+        (function(){
+
+            'use strict';
+            angular.module('wall.demo', []).controller('wallController', ['$scope',wallController]);
+
+            function wallController($scope){
+                $scope.person = {
+                    name : 'Joe',
+                    age : '35'
+                }
+            }
+
+        }());
+        //this thing right here, the parenthesis alone, makes the IIFE call or callback to call the function itself
+    </script>
+</body>
+</html>
