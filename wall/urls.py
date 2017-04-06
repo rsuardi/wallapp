@@ -1,11 +1,14 @@
 from django.conf.urls import url
 from django.views.generic import TemplateView
+from rest_framework.routers import DefaultRouter
 
-from .api import PostApi
+from .api import PostViewSet, UserViewSet, MasterPostViewSet
 
 
-urlpatterns = [
-    url(r'^posts$', PostApi.as_view()),
-    url(r'^home', TemplateView.as_view(template_name='wall/home.html'))
+router = DefaultRouter()
 
-]
+router.register(r'^posts', PostViewSet)
+router.register(r'^users', UserViewSet)
+router.register(r'^masterposts', MasterPostViewSet)
+
+urlpatterns = router.urls
