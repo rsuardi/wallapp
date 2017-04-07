@@ -2,13 +2,10 @@ from rest_framework.generics import ListAPIView
 from rest_framework.viewsets import ModelViewSet
 from django.contrib.auth.models import User
 
-from .serializers import PostSerializer, UserSerializer, MasterPostSerializer
-from .models import Post, MasterPost
+from .serializers import PostSerializer, UserSerializer
+from .models import Post
 
 
-class MasterPostViewSet(ModelViewSet):
-    queryset = MasterPost.objects.all()
-    serializer_class = MasterPostSerializer
 
 class PostViewSet(ModelViewSet):
     queryset = Post.objects.all()

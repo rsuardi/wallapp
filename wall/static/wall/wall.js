@@ -8,31 +8,26 @@
             angular.module('wall.demo', []).controller('wallController', ['$scope','$http',wallController]);
 
             function wallController($scope, $http){
-                $scope.user = {
-                        password: "12345",
-                        last_login: null,
-                        is_superuser: true,
-                        username: "rsuardi3",
-                        first_name: "Ruben",
-                        last_name: "Suardi",
-                        email: "rsuardiaraujo@gmail.com",
-                        is_staff: true,
-                        is_active: true,
-                        date_joined: "2017-04-06T18:11:30.905194Z",
-                        groups: [],
-                        user_permissions: [
-                            19
-                        ]
-                };
-                $scope.add = function (list,new_entry) {
-                    var thing = {
-                        first_thing : new_entry
+                $scope.date = new Date();
+
+                $scope.add = function (list,title_entry,description_entry) {
+                    var post = {
+                        title : title_entry,
+                        post_description : description_entry
                     };
+
+                    $http.post('/wall/posts/', post).then(function (response) {
+                        list.posts.push(response.data);
+                    },function () {
+                        alert("Could not create the post")
+                    });
+
+                    /*
                     $http.post('/wall/users/', $scope.user).then(function (response) {
-                        list.thing.push(response.data);
+                        list.posts.push(response.data);
                     },function () {
                         alert("Could not create the user")
-                    });
+                    });*/
                 };
 
                 $scope.data = [];

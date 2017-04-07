@@ -25,10 +25,17 @@
     .row{
         margin : 0 auto;
     }
+    html {
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
+  }
+    .card{
+        border-radius: 10px;
+
+    }
+
 </style>
 <body ng-app="wall.demo">
     <h2>Main Wall</h2>
-
     {% verbatim %}
     <div ng-controller="wallController">
         <div id="poster" class="row">
@@ -37,9 +44,10 @@
                 <div class="card-image">
                 </div>
                 <div class="card-content">
+                    <h3>{{date | date:'MMMM-dd'}}</h3>
                     <input ng-model="title_entry" type="text" placeholder="Title" value=""/>
-                    <input type="text" placeholder="What your thinking?" value="{{ title_entry }}">
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Post
+                    <input ng-model="description_entry" type="text" placeholder="What your thinking?">
+                    <button ng-click="add(list,title_entry,description_entry)"class="btn waves-effect waves-light" type="submit" name="action" >Post
                         <i class="material-icons right">send</i>
                     </button>
                 </div>
@@ -49,7 +57,7 @@
         <div ng-repeat="list in data">
             <div ng-repeat="post in list.posts">
                 <div class="row">
-                    <div class="col s12 m6">
+                    <div class="col s12 m6 ">
                       <div class="card">
                         <div class="card-image">
                           <img src="/static/wall/images/sample-1.jpg">
@@ -58,17 +66,14 @@
                         </div>
                         <div class="card-content">
                           <p>{{ post.post_description }}</p>
+                            <p class="flow-text">{{post.datetime | date:'MMMM-dd'}}</p>
                         </div>
                       </div>
                     </div>
                   </div>
             </div>
         </div>
-        <div >
-            <h3>{{  new_entry }}</h3>
-            <input type="text" ng-model="new_entry" />
-            <input type="button" ng-click="add(list,new_entry)">
-        </div>
+
     </div>
     {% endverbatim %}
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
