@@ -15,9 +15,11 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^wall/', include('wall.urls')),
-    url(r'^home', TemplateView.as_view(template_name='wall/home.html')),
+    url(r'^auth_api/', include('auth_api.urls')),
+    url(r'^$', ensure_csrf_cookie(TemplateView.as_view(template_name='home.html'))),
 ]

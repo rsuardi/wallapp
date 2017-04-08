@@ -1,0 +1,49 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+    <!--CSS-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<style type="text/css">
+    img {
+        display: block;
+        margin: auto;
+        width: 50px;
+        height: 100px;
+    }
+    h1,h2{
+        text-align: center;
+    }
+    .row{
+        margin : 0 auto;
+    }
+    html {
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
+  }
+    .card{
+        border-radius: 10px;
+
+    }
+
+</style>
+<body ng-app="wall.demo">
+    <h2>Main Wall</h2>
+    <img src="static/images/sample-1.jpg">
+
+    <ng-view></ng-view>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.js"></script>
+    <script src="{% static "js/wall.js" %}"></script>
+    <script src="{% static "js/wall.config.js" %}"></script>
+    <script src="{% static "js/login.controller.js" %}"></script>
+</body>
+</html>

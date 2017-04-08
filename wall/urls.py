@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from django.views.generic import TemplateView
+from rest_framework.compat import include
 from rest_framework.routers import DefaultRouter
 
 from .api import PostViewSet, UserViewSet
