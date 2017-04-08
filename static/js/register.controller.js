@@ -6,19 +6,43 @@
     'use strict';
 
     var app = angular.module('wall.demo');
-        app.controller('loginController', ['$scope','$http','$location', loginController]);
+        app.controller('registerController', ['$scope','$http','$location', registerController]);
 
 
-    function loginController($scope,$http,$location) {
-        $scope.login = function () {
-            $http.post('/auth_api/login/', $scope.user)
+    function registerController($scope,$http,$location) {
+        $scope.register = function () {
+            $http.post('/wall/users/', $scope.user)
                 .then(function () {
-                    $location.url('/');
+                    $location.url('/register');
                 },
                 function () {
-                    $scope.login_error = "Invalid username and password combination";
+                    $scope.login_error = "There was an error trying to save the new user";
                 });
         }
+
+
+        $scope.add = function (first_name,username,password) {
+                    var post = {
+                        first_name : first_name,
+                        username: username,
+                        password : password,
+                        date_joined: new Date()
+                    };
+
+                    $http.post('/wall/users/', post).then(function (response) {
+                        alert("Created!")
+                        $location.url('/login');
+                    },function () {
+                        alert("Could not create the user!")
+                    });
+
+                    /*
+                    $http.post('/wall/users/', $scope.user).then(function (response) {
+                        list.posts.push(response.data);
+                    },function () {
+                        alert("Could not create the user")
+                    });*/
+                };
     }
 
 })();

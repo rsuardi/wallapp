@@ -17,6 +17,10 @@
                 templateUrl: '/static/html/login.html',
                 controller : 'loginController',
             })
+            .when('/register',{
+                templateUrl : '/static/html/register.html',
+                controller : 'registerController'
+            })
             .otherwise('/',{
 
               });

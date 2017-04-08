@@ -35,7 +35,7 @@
 
 </style>
 <body ng-app="wall.demo">
-    <h2>Main Wall</h2>
+    <h2>{{ main_title }}</h2>
     <img src="static/images/sample-1.jpg">
 
     <ng-view></ng-view>
@@ -45,5 +45,6 @@
     <script src="{% static "js/wall.js" %}"></script>
     <script src="{% static "js/wall.config.js" %}"></script>
     <script src="{% static "js/login.controller.js" %}"></script>
+    <script src="{% static "js/register.controller.js" %}"></script>
 </body>
 </html>
