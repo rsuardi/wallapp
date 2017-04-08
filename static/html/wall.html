@@ -1,3 +1,6 @@
+<div>
+    <h2>Main wall</h2>
+</div>
 <form ng-submit="add(title_entry, description_entry)">
     <div id="poster" class="row">
         <div class="col s12 m6">
@@ -6,8 +9,9 @@
             </div>
             <div class="card-content">
                 <h3>{{date | date:'MMMM-dd'}}</h3>
-                <input ng-model="title_entry" type="text" placeholder="Title" value=""/>
-                <input ng-model="description_entry" type="text" placeholder="What your thinking?">
+                <input ng-model="title_entry" type="text" placeholder="Title" value="" required/>
+                <label>Description</label>
+                <textarea ng-model="description_entry"  class="materialize-textarea" placeholder="What your thinking?" required></textarea>
                 <button class="btn waves-effect waves-light" type="submit" >Post
                     <i class="material-icons right">send</i>
                 </button>

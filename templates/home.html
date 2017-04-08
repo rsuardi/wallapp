@@ -4,13 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
     <!--CSS-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
 </head>
 <style type="text/css">
     img {
@@ -35,8 +33,15 @@
 
 </style>
 <body ng-app="wall.demo">
-    <h2>{{ main_title }}</h2>
-    <img src="static/images/sample-1.jpg">
+<nav>
+    <div class="nav-wrapper">
+        <img src="/static/images/logo.png" class="brand-logo" style="width: 64px; height: 64px;">
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>{{ main_title }}</li>
+        </ul>
+    </div>
+  </nav>
+    <img class="img-responsive img-circle" src="static/images/sample-1.jpg" style="width: 100px; height: 100px;">
 
     <ng-view></ng-view>
 

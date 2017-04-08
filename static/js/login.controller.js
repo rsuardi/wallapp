@@ -10,7 +10,7 @@
 
 
     function loginController($scope,$http,$location) {
-        $scope.main_title = 'Login';
+        $scope.main_title = 'Login form';
         $scope.login = function () {
             $http.post('/auth_api/login/', $scope.user)
                 .then(function () {

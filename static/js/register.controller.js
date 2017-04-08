@@ -10,6 +10,7 @@
 
 
     function registerController($scope,$http,$location) {
+        $scope.main_title = 'Register form';
         $scope.register = function () {
             $http.post('/wall/users/', $scope.user)
                 .then(function () {
@@ -18,12 +19,14 @@
                 function () {
                     $scope.login_error = "There was an error trying to save the new user";
                 });
-        }
+        };
 
 
-        $scope.add = function (first_name,username,password) {
+        $scope.add = function (first_name,last_name,email,username,password) {
                     var post = {
                         first_name : first_name,
+                        last_name : last_name,
+                        email: email,
                         username: username,
                         password : password,
                         date_joined: new Date()
